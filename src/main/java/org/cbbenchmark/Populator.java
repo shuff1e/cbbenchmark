@@ -1,7 +1,6 @@
+package org.cbbenchmark;
+
 import com.couchbase.client.CouchbaseClient;
-import com.couchbase.client.internal.ObserveFuture;
-import net.spy.memcached.PersistTo;
-import net.spy.memcached.internal.OperationFuture;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,18 +11,25 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class Populator {
 
-    public static final int NUMTREADS = 2;
-    public static final int NUMKEYS = 10000;
-
+    /**
+     * @param args -> num of threads, num of keys, sleep time, hostname
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
+        final int numThreads = Integer.valueOf(args[0]);
+        final int numKeys = Integer.valueOf(args[1]);
+        final int sleepTime = Integer.valueOf(args[2]);
+        final String hostname = args[3];
+
         final ArrayList<URI> nodes = new ArrayList<URI>();
-        nodes.add(URI.create("http://localhost:8091/pools"));
+//        nodes.add(URI.create("http://localhost:8091/pools"));
 //        nodes.add(URI.create("http://usvalzcbstg01.inf.videologygroup.com:8091/pools"));
+
+        nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client = null;
         try {
@@ -32,12 +38,12 @@ public class Populator {
             e1.printStackTrace();
         }
 
-        final ExecutorService executor = Executors.newFixedThreadPool(NUMTREADS);
+        final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
-        final List<Future> futures = new ArrayList<Future>(NUMKEYS);
+        final List<Future> futures = new ArrayList<Future>(numKeys);
 
-        for (int i = 0; i < NUMKEYS; i++) {
-            final Callable<OperationFuture> worker = new Worker(i, client, true);
+        for (int i = 0; i < numKeys; i++) {
+            final Callable<Future> worker = new Worker(i, client, true, sleepTime);
             futures.add(executor.submit(worker));
         }
 
@@ -46,7 +52,7 @@ public class Populator {
             do {
                 notCompleted = false;
                 for (final Future future : futures) {
-                    if (!((ObserveFuture) future.get()).isDone()) {
+                    if (!((Future) future.get()).isDone()) {
                         notCompleted = true;
                         break;
                     }
@@ -57,7 +63,7 @@ public class Populator {
 
             client.shutdown();
             executor.shutdown();
-            executor.awaitTermination(5, TimeUnit.MINUTES);
+            executor.awaitTermination(10, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
             System.out.println("Ow ow");
         }
