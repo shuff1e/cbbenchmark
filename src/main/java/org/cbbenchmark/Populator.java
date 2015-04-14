@@ -26,9 +26,6 @@ public class Populator {
         final String hostname = args[3];
 
         final ArrayList<URI> nodes = new ArrayList<URI>();
-//        nodes.add(URI.create("http://localhost:8091/pools"));
-//        nodes.add(URI.create("http://usvalzcbstg01.inf.videologygroup.com:8091/pools"));
-
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client = null;
