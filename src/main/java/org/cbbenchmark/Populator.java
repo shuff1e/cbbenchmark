@@ -40,25 +40,27 @@ public class Populator {
 
         final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
-        final List<Future> futures = new ArrayList<Future>(numKeys);
+//        final List<Future> futures = new ArrayList<Future>(numKeys);
 
         for (int i = 0; i < numKeys; i++) {
             final Callable<Future> worker = new Worker(i, client, true, sleepTime);
-            futures.add(executor.submit(worker));
+//            futures.add(executor.submit(worker));
+            executor.submit(worker);
         }
 
         try {
-            boolean notCompleted;
-            do {
-                notCompleted = false;
-                for (final Future future : futures) {
-                    if (!((Future) future.get()).isDone()) {
-                        notCompleted = true;
-                        break;
-                    }
-                }
-            } while (notCompleted);
+//            boolean notCompleted;
+//            do {
+//                notCompleted = false;
+//                for (final Future future : futures) {
+//                    if (!((Future) future.get()).isDone()) {
+//                        notCompleted = true;
+//                        break;
+//                    }
+//                }
+//            } while (notCompleted);
 
+            Thread.sleep(1000000);
             System.out.println("Data populated");
 
             client.shutdown();
