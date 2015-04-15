@@ -1,10 +1,8 @@
 package org.cbbenchmark;
 
-import com.couchbase.client.CouchbaseClient;
-
-import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Populator {
 
@@ -17,29 +15,38 @@ public class Populator {
 
         final int numKeys = Integer.valueOf(args[0]);
         final int sleepTime = Integer.valueOf(args[1]);
-        final String hostname = args[2];
-        final String value = "randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--randomString--ran";
-        
-        final ArrayList<URI> nodes = new ArrayList<URI>();
-        nodes.add(URI.create("http://" + hostname + ":8091/pools"));
+        final int numThreads = Integer.valueOf(args[2]);
+        final String hostName = args[3];
 
-        CouchbaseClient client = null;
+        final int keys_per_thread = numKeys / numThreads;
+
+        final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
+        final List<Future> futures = new ArrayList<Future>(numKeys);
+
+        for (int i = 0; i < numThreads; i++) {
+            final Callable<Future> worker = new Wpopulator(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, hostName);
+            futures.add(executor.submit(worker));
+        }
+
         try {
-            client = new CouchbaseClient(nodes, "default", "");
-
-            for (int i = 0; i < numKeys; i++) {
-                Thread.sleep(sleepTime);
-                client.set(String.valueOf(i), 1000, value);
-            }
+            boolean notCompleted;
+            do {
+                notCompleted = false;
+                for (final Future future : futures) {
+                    if (!((Future) future.get()).isDone()) {
+                        notCompleted = true;
+                        break;
+                    }
+                }
+            } while (notCompleted);
+           
+            executor.shutdown();
+            executor.awaitTermination(1, TimeUnit.MINUTES);
             
-            client.shutdown();
-            
-        } catch (IOException e1) {
-            e1.printStackTrace();
-            System.err.println("Error connecting to Couchbase: " + e1.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Ow ow");
         }
-
+        
         System.out.println("Data populated");
-
-        }
+    }
 }
