@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 public class Populator {
 
     /**
-     * @param args -> num of keys, sleep time, hostname
+     * @param args -> num of keys, sleep time, num threads, hostname
      * @throws Exception
      */
         
