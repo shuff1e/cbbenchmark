@@ -44,24 +44,9 @@ public class Benchmark {
                 futures.add(executor.submit(worker));
             }
         }
+        
+        executor.shutdown();
 
-//        try {
-//            boolean notCompleted;
-//            do {
-//                notCompleted = false;
-//                for (final Future future : futures) {
-//                    if (!((Future) future.get()).isDone()) {
-//                        notCompleted = true;
-//                        break;
-//                    }
-//                }
-//            } while (notCompleted);
-
-            executor.shutdown();
-
-//        } catch (InterruptedException e) {
-//            System.out.println("Ow!");
-//        }
         System.out.println("Done");
     }
 }
