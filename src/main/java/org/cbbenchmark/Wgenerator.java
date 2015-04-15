@@ -30,7 +30,7 @@ public class Wgenerator implements Callable<Future> {
         final ArrayList<URI> nodes = new ArrayList<URI>();
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
-        CouchbaseClient client = null;
+        CouchbaseClient client;
         try {
             client = new CouchbaseClient(nodes, "default", "");
 

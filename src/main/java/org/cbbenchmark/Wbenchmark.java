@@ -1,5 +1,7 @@
 package org.cbbenchmark;
 
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Timer;
 import com.couchbase.client.CouchbaseClient;
 import net.spy.memcached.CASValue;
 import net.spy.memcached.internal.OperationFuture;
@@ -21,14 +23,16 @@ public class Wbenchmark implements Callable<Future> {
     private String hostname;
     private String value;
     private long timeout;
+    private MetricRegistry registry;
 
-    public Wbenchmark(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName, long timeout) {
+    public Wbenchmark(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName, long timeout, MetricRegistry registry) {
         this.keysatrt = keySatrt;
         this.keyend = keyEnd;
         this.sleeptime = sleepTime;
         this.value = loadValue;
         this.hostname = hostName;
         this.timeout = timeout;
+        this.registry = registry;
     }
 
     public Future call() throws Exception {
@@ -37,30 +41,27 @@ public class Wbenchmark implements Callable<Future> {
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client;
-
+        final Timer timer = this.registry.timer("timer");
         try {
             client = new CouchbaseClient(nodes, "default", "");
-            int n = 0;
-            int m = keyend - keysatrt;
-            int timeouts = 0;
+
+            this.registry.counter("total").inc(keyend - keysatrt);
 
             for (int i = keysatrt; i < keyend; i++) {
                 Thread.sleep(sleeptime);
                 final OperationFuture<CASValue<Object>> operationFuture = client.asyncGetAndTouch(String.valueOf(i), getUnixEpochInSeconds(2592000000L));
 
-                try {
-                    CASValue<Object> result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
-                    if (result.getValue().equals(value)) {
-                        n++;
-                    }
+                CASValue<Object> result = null;
+                try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
+                    result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
                 } catch (TimeoutException e1) {
-                    timeouts++;
+                    this.registry.counter("timeout").inc();
+                }
+                if (result != null && result.getValue().equals(value)) {
+                    this.registry.counter("success").inc();
                 }
             }
 
-            System.out.println("Requested keys: " + m);
-            System.out.println("Received keys: " + n);
-            System.out.println("Timeouts: " + timeouts);
             client.shutdown();
 
         } catch (IOException e1) {
