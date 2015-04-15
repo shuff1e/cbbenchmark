@@ -8,6 +8,4 @@ Build
 
 Run
 
- **java -Xmx1g -cp cbbenchmark-*.jar org.cbbenchmark.Populator "num-of-keys" "thread-sleep-time-ms" "num-threads" "couchbase-hostname"**
- 
- **java -Xmx1g -cp cbbenchmark-*.jar org.cbbenchmark.Populator 1000000 4 8 127.0.0.1**
+  **java -Xmx1g -cp cbbenchmark-*.jar org.cbbenchmark.Populator 1000000 4 8 127.0.0.1**
