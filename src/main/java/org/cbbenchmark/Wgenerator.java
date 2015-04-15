@@ -8,26 +8,19 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
-public class Wpopulator implements Callable<Future> {
+public class Wgenerator implements Callable<Future> {
 
     private int keysatrt;
     private int keyend;
     private int sleeptime;
     private String hostname;
-    private static String value;
+    private String value;
 
-    static {
-        StringBuilder builder = new StringBuilder(2000);
-        for (int k = 0; k < 200; k++) {
-            builder.append("23couchbaseecouchbasee535674");
-        }
-        value = builder.toString();
-    }
-
-    public Wpopulator(int keySatrt, int keyEnd, int sleepTime, String hostName) {
+    public Wgenerator(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName) {
         this.keysatrt = keySatrt;
         this.keyend = keyEnd;
         this.sleeptime = sleepTime;
+        this.value = loadValue;
         this.hostname = hostName;
     }
 

@@ -8,4 +8,4 @@ Build
 
 Run
 
-  **java -Xmx1g -cp cbbenchmark-*.jar org.cbbenchmark.Populator 1000000 4 8 127.0.0.1**
+  **java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark 1000000 4 8 127.0.0.1 false**

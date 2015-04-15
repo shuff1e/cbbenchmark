@@ -1,9 +1,5 @@
 package org.cbbenchmark;
 
-import com.couchbase.client.CouchbaseClient;
-
-import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -11,35 +7,41 @@ import java.util.concurrent.*;
 public class Benchmark {
 
     /**
-     * @param args -> num of threads, num of keys, sleep time, sleep time for "get", hostname
+     * @param args -> num of keys, sleep time, num threads, hostname
      * @throws Exception
      */
+    public static String value;
+
     public static void main(String[] args) throws Exception {
 
-        final int numThreads = Integer.valueOf(args[0]);
-        final int numKeys = Integer.valueOf(args[1]);
-        final int sleepTime = Integer.valueOf(args[2]);
-        final int sleepTimeReader = Integer.valueOf(args[3]);
-        final String hostname = args[4];
-
-        final ArrayList<URI> nodes = new ArrayList<URI>();
-        nodes.add(URI.create("http://" + hostname + ":8091/pools"));
-
-        CouchbaseClient client = null;
-        try {
-            client = new CouchbaseClient(nodes, "default", "");
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        StringBuilder builder = new StringBuilder(2000);
+        for (int k = 0; k < 200; k++) {
+            builder.append("23couchbaseecouchbasee535674");
         }
 
-        final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
+        value = builder.toString();
 
+        final int numKeys = Integer.valueOf(args[0]);
+        final int sleepTime = Integer.valueOf(args[1]);
+        final int numThreads = Integer.valueOf(args[2]);
+        final String hostName = args[3];
+        final String isGenerator = args[4];
+
+        final int keys_per_thread = numKeys / numThreads;
+
+        final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
         final List<Future> futures = new ArrayList<Future>(numKeys);
 
-        for (int i = 0; i < numKeys; i++) {
-            final Callable<Future> worker = new Worker(i, client, true, sleepTime);
-            
-            futures.add(executor.submit(worker));
+        if (isGenerator.equals("true")) {
+            for (int i = 0; i < numThreads; i++) {
+                final Callable<Future> worker = new Wgenerator(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName);
+                futures.add(executor.submit(worker));
+            }
+        } else {
+            for (int i = 0; i < numThreads; i++) {
+                final Callable<Future> worker = new Wbenchmark(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName);
+                futures.add(executor.submit(worker));
+            }
         }
 
         try {
@@ -54,13 +56,11 @@ public class Benchmark {
                 }
             } while (notCompleted);
 
-            System.out.println("Data populated");
-
-            client.shutdown();
             executor.shutdown();
-            executor.awaitTermination(10, TimeUnit.MINUTES);
+
         } catch (InterruptedException e) {
-            System.out.println("Ow ow");
+            System.out.println("Ow!");
         }
+        System.out.println("Done");
     }
 }
