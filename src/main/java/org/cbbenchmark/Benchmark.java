@@ -45,7 +45,7 @@ public class Benchmark {
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .build();
-        reporter.start(1, TimeUnit.SECONDS);
+        reporter.start(30, TimeUnit.SECONDS);
 
         if (isGenerator) {
             for (int i = 0; i < numThreads; i++) {
