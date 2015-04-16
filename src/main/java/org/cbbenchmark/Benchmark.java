@@ -17,8 +17,8 @@ public class Benchmark {
      */
     public static void main(String[] args) throws Exception {
 
-        StringBuilder builder = new StringBuilder(2000);
-        for (int k = 0; k < 200; k++) {
+        StringBuilder builder = new StringBuilder(4000);
+        for (int k = 0; k < 400; k++) {
             builder.append("23couchbaseecouchbasee535674");
         }
 
