@@ -19,7 +19,7 @@ public class Benchmark {
 
         StringBuilder builder = new StringBuilder(4000);
         for (int k = 0; k < 400; k++) {
-            builder.append("23couchbaseecouchbasee535674");
+            builder.append("23couchbaseecouchbasee535646bv256c24gfdsdg<secdxawsczdxcvcgvdsf74");
         }
 
         value = builder.toString();
