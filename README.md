@@ -36,6 +36,6 @@ Delete client
 
 Tips
 
-  **if you favor pressure than metrics, don't wait for the response.
-  if you favor metrics than pressure, wait fot the response, aka do it in the sync way.**
+  **if you favor pressure than metrics, don't wait for the response.**
+  **if you favor metrics than pressure, wait fot the response, aka do it in the sync way.**
 
