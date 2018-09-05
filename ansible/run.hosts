@@ -10,5 +10,5 @@ valueSize=2048
 timeout=10
 sleepTime=4
 numThreads=32
-ration=0.1
+ratio=0.1
 prefix="shuffle"
