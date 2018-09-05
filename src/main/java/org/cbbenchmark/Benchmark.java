@@ -36,9 +36,10 @@ public class Benchmark {
         System.arraycopy(src, 0, dest, 0, valueSize);
         value = new String(dest);
 
-        final int keys_per_thread = numKeys / numThreads;
         final int readNumThreads = (int)Math.round(numThreads * ratio);
         final int writeNumThreads = numThreads - readNumThreads;
+        final int read_keys_per_thread = numKeys / readNumThreads;
+        final int write_keys_per_thread = numKeys / writeNumThreads;
 
         final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
@@ -55,11 +56,11 @@ public class Benchmark {
         reporter.start(30, TimeUnit.SECONDS);
 
         for (int i = 0; i < writeNumThreads; i++) {
-            final Callable<Future> worker = new Wgenerator(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
+            final Callable<Future> worker = new Wgenerator(i * read_keys_per_thread, i * read_keys_per_thread + read_keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
             executor.submit(worker);
         }
         for (int i = 0; i < readNumThreads; i++) {
-            final Callable<Future> worker = new Wbenchmark(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
+            final Callable<Future> worker = new Wbenchmark(i * write_keys_per_thread, i * write_keys_per_thread + write_keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
             executor.submit(worker);
         }
 
