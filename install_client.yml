@@ -1,0 +1,8 @@
+---
+- hosts: nodes
+  remote_user: root
+  tasks:
+    - name: send client to remote hosts
+      copy:
+        src: cbbenchmark
+        dest: /tmp
