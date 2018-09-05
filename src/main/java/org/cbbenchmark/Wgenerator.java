@@ -59,6 +59,7 @@ public class Wgenerator implements Callable<Future> {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
                     client.set(prefix + String.valueOf(i), 100000, value);
+                    // uncomment the following part if you favor metrics than pressure
                     // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 100000, value);
 
                     // Boolean result = false;
