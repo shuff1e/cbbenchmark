@@ -58,17 +58,18 @@ public class Wgenerator implements Callable<Future> {
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
-                    final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 100000, value);
+                    client.set(prefix + String.valueOf(i), 100000, value);
+                    // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 100000, value);
 
-                    Boolean result = false;
-                    try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
-                        result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
-                    } catch (TimeoutException e1) {
-                        this.registry.counter("timeout").inc();
-                    }
-                    if (result) {
-                        this.registry.counter("success").inc();
-                    }
+                    // Boolean result = false;
+                    // try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
+                    //     result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
+                    // } catch (TimeoutException e1) {
+                    //     this.registry.counter("timeout").inc();
+                    // }
+                    // if (result) {
+                    //     this.registry.counter("success").inc();
+                    // }
                 }
             }
 
