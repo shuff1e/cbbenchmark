@@ -31,3 +31,6 @@ Run benchmark
 Delete client
   
   **ansible-playbook -i client.hosts delete_client.yml -e 'host_key_checking=False' -f 12**
+  
+Tips
+  **if you favor pressure than metrics, don't wait for the response**
