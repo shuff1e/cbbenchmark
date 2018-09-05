@@ -8,8 +8,8 @@ Build
 
 Generate test dataset
 
-  **java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark 5000000 4 32 127.0.0.1 true**
+  **java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark 127.0.0.1 bucketName bucketPassword 5000000 2000 10 0 32 true cloudcloud 100**
 
 Run benchmark
 
-  **java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark 50000000 0 32 127.0.0.1 false 10**
+  **java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark 127.0.0.1 bucketName bucketPassword 5000000 2000 10 0 32 false cloudcloud 100**
