@@ -13,3 +13,21 @@ Generate test dataset
 Run benchmark
 
   **java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark 127.0.0.1 bucketName bucketPassword 5000000 2000 10 0 32 false cloudcloud 100**
+  
+---
+
+Install client
+
+  **ansible-playbook -i client.hosts install_client.yml**
+
+Generate test dataset
+
+  **ansible-playbook -i run.hosts run.yml -e isGenerator=true -e loopTimes=100**
+  
+Run benchmark
+
+  **ansible-playbook -i run.hosts run.yml -e isGenerator=false -e loopTimes=100**
+  
+Delete client
+  
+  **ansible-playbook -i client.hosts delete_client.yml**
