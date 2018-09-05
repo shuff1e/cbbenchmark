@@ -15,13 +15,21 @@ public class Wgenerator implements Callable<Future> {
     private int sleeptime;
     private String hostname;
     private String value;
+    private String bucketName;
+    private String bucketPwd;
+    private String prefix;
+    private int loopTimes;
 
-    public Wgenerator(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName) {
+    public Wgenerator(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName, String bucketName, String bucketPwd, String prefix, int loopTimes) {
         this.keysatrt = keySatrt;
         this.keyend = keyEnd;
         this.sleeptime = sleepTime;
         this.value = loadValue;
         this.hostname = hostName;
+        this.bucketName = bucketName;
+        this.bucketPwd = bucketPwd;
+        this.prefix = prefix;
+        this.loopTimes = loopTimes;
     }
 
     public Future call() throws Exception {
@@ -32,11 +40,13 @@ public class Wgenerator implements Callable<Future> {
 
         CouchbaseClient client;
         try {
-            client = new CouchbaseClient(nodes, "default", "");
+            client = new CouchbaseClient(nodes, bucketName, bucketPwd);
 
-            for (int i = keysatrt; i < keyend; i++) {
-                Thread.sleep(sleeptime);
-                client.set(String.valueOf(i), 100000, value);
+            for (int loop = 0; loop < loopTimes; loop++) {
+                for (int i = keysatrt; i < keyend; i++) {
+                    Thread.sleep(sleeptime);
+                    client.set(prefix + String.valueOf(i), 100000, value);
+                }
             }
 
             client.shutdown();
