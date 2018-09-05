@@ -24,8 +24,12 @@ public class Wbenchmark implements Callable<Future> {
     private String value;
     private long timeout;
     private MetricRegistry registry;
+    private String bucketName;
+    private String bucketPwd;
+    private String prefix;
+    private int loopTimes;
 
-    public Wbenchmark(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName, long timeout, MetricRegistry registry) {
+    public Wbenchmark(int keySatrt, int keyEnd, int sleepTime, String loadValue, String hostName, long timeout, MetricRegistry registry, String bucketName, String bucketPwd, String prefix, int loopTimes) {
         this.keysatrt = keySatrt;
         this.keyend = keyEnd;
         this.sleeptime = sleepTime;
@@ -33,6 +37,10 @@ public class Wbenchmark implements Callable<Future> {
         this.hostname = hostName;
         this.timeout = timeout;
         this.registry = registry;
+        this.bucketName = bucketName;
+        this.bucketPwd = bucketPwd;
+        this.prefix = prefix;
+        this.loopTimes = loopTimes;
     }
 
     public Future call() throws Exception {
@@ -43,22 +51,24 @@ public class Wbenchmark implements Callable<Future> {
         CouchbaseClient client;
         final Timer timer = this.registry.timer("timer");
         try {
-            client = new CouchbaseClient(nodes, "default", "");
+            client = new CouchbaseClient(nodes, bucketName, bucketPwd);
 
-            this.registry.counter("total").inc(keyend - keysatrt);
+            this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
 
-            for (int i = keysatrt; i < keyend; i++) {
-                Thread.sleep(sleeptime);
-                final OperationFuture<CASValue<Object>> operationFuture = client.asyncGetAndTouch(String.valueOf(i), getUnixEpochInSeconds(2592000000L));
+            for (int loop = 0; loop < loopTimes; loop++) {
+                for (int i = keysatrt; i < keyend; i++) {
+                    Thread.sleep(sleeptime);
+                    final OperationFuture<CASValue<Object>> operationFuture = client.asyncGetAndTouch(prefix + String.valueOf(i), getUnixEpochInSeconds(7200000L));
 
-                CASValue<Object> result = null;
-                try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
-                    result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
-                } catch (TimeoutException e1) {
-                    this.registry.counter("timeout").inc();
-                }
-                if (result != null && result.getValue().equals(value)) {
-                    this.registry.counter("success").inc();
+                    CASValue<Object> result = null;
+                    try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
+                        result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
+                    } catch (TimeoutException e1) {
+                        this.registry.counter("timeout").inc();
+                    }
+                    if (result != null && result.getValue().equals(value)) {
+                        this.registry.counter("success").inc();
+                    }
                 }
             }
 
@@ -81,5 +91,3 @@ public class Wbenchmark implements Callable<Future> {
         }
     }
 }
-
-
