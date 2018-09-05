@@ -2,9 +2,9 @@
 
 
 [nodes:vars]
-hostname="10.19.56.41"
-bucketName="aatest"
-bucketPwd="123456"
+hostname="127.0.0.1"
+bucketName=""
+bucketPwd=""
 numKeys=5000000
 valueSize=2048
 timeout=10
