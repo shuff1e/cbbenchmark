@@ -12,7 +12,7 @@ public class Benchmark {
     public static String value = "78b6crtqefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец58foxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец58foxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец58foxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец58foxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец58foxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец58foxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<BлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшыисвртчой09йоцшущпыивруцтофчвтфыаовуралорпаг13655ке7134е5к784епув87йеа73пй37кугвцфорвч7гуряыш27164793еу78цвеа978уцесп78уцуеавпс7нцупвыфв7па78йуепывнфчгяспам8фынгавс78феп78цевп78йец78веый87цевы8пч6йцефыпавч678b6crtqefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшыисвртчой09йоцшущпыивруцтофчвтфыаовуралорпаг13655ке7134е5к784епув87йеа73пй37кугвцфорвч7гуряыш27164793еу78цвеа978уцесп78уцуеавпс7нцупвыфв7па78йуепывнфчгяспам8фынгавс78феп78цевп78йец78веый87цевы8пч6йцефыпавч678b6crtqefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшыисвртчой09йоцшущпыивруцтофчвтфыаовуралорпаг13655ке7134е5к784епув87йеа73пй37кугвцфорвч7гуряыш27164793еу78цвеа978уцесп78уцуеавпс7нцупвыфв7па78йуепывнфчгяспам8фынгавс78феп78цевп78йец78веый87цевы8пч6йцефыпавраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакраоыпвфывмтосрчгнвакфвыйацныгукец589йргыщшцторвуырфалдоофвзйшefoxgausH<Bлоывивафмпайвимвпафровераоыпвфывмтосрчгнвакч6";
 
     /**
-     * @param args -> hostname, bucket name, bucket password, num of keys, size of document value , timeout for read request, sleep time, num threads, isGenerator
+     * @param args -> hostname, bucket name, bucket password, num of keys, size of document value , timeout for read request, sleep time, num threads, ratio
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
@@ -27,7 +27,7 @@ public class Benchmark {
         final long timeout = Long.valueOf(args[5]);
         final int sleepTime = Integer.valueOf(args[6]);
         final int numThreads = Integer.valueOf(args[7]);
-        final boolean isGenerator = Boolean.valueOf(args[8]);
+        final double ratio = Double.valueOf(args[8]);
         final String prefix = String.valueOf(args[9]);
         final int loopTimes = Integer.valueOf(args[10]);
 
@@ -37,6 +37,8 @@ public class Benchmark {
         value = new String(dest);
 
         final int keys_per_thread = numKeys / numThreads;
+        final int readNumThreads = (int)Math.round(numThreads * ratio);
+        final int writeNumThreads = numThreads - readNumThreads;
 
         final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
@@ -52,16 +54,13 @@ public class Benchmark {
                 .build();
         reporter.start(30, TimeUnit.SECONDS);
 
-        if (isGenerator) {
-            for (int i = 0; i < numThreads; i++) {
-                final Callable<Future> worker = new Wgenerator(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName, bucketName, bucketPwd, prefix, loopTimes);
-                executor.submit(worker);
-            }
-        } else {
-            for (int i = 0; i < numThreads; i++) {
-                final Callable<Future> worker = new Wbenchmark(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
-                executor.submit(worker);
-            }
+        for (int i = 0; i < writeNumThreads; i++) {
+            final Callable<Future> worker = new Wgenerator(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
+            executor.submit(worker);
+        }
+        for (int i = 0; i < readNumThreads; i++) {
+            final Callable<Future> worker = new Wbenchmark(i * keys_per_thread, i * keys_per_thread + keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
+            executor.submit(worker);
         }
 
         executor.shutdown();
