@@ -22,11 +22,11 @@ Install client
 
 Generate test dataset
 
-  **ansible-playbook -i run.hosts run.yml -e isGenerator=true -e loopTimes=100 -e 'host_key_checking=False' -f 12**
+  **ansible-playbook -i run.hosts run.yml -e loopTimes=100 -e 'host_key_checking=False' -f 12**
   
 Run benchmark
 
-  **ansible-playbook -i run.hosts run.yml -e isGenerator=false -e loopTimes=100 -e 'host_key_checking=False' -f 12**
+  **ansible-playbook -i run.hosts run.yml -e loopTimes=100 -e 'host_key_checking=False' -f 12**
   
 Delete client
   
