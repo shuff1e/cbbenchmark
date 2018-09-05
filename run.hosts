@@ -1,0 +1,13 @@
+[nodes]
+
+
+[nodes:vars]
+hostname="127.0.0.1"
+bucketName="default"
+bucketPwd="123456"
+numKeys=5000000
+valueSize=2000
+timeout=10
+sleepTime=0
+numThreads=16
+prefix="cloudcloud"
