@@ -2,13 +2,13 @@
 - hosts: nodes
   remote_user: root
   tasks:
-    - name: write to or read from couchbase cluster
+    - name: write or read with couchbase cluster
       shell: >
         java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark {{ hostname|quote }}
         {{ bucketName|quote }} {{ bucketPwd|quote }}
         {{ numKeys }} {{ valueSize }} {{ timeout }}
         {{ sleepTime }} {{ numThreads }}
-        {{ isGenerator|quote }}
+        {{ ratio }}
         {{ prefix|quote }}
         {{ loopTimes }}
       args:
