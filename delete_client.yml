@@ -1,0 +1,8 @@
+---
+- hosts: nodes
+  remote_user: root
+  tasks:
+    - name: uninstall client of remote hosts
+      file:
+        path: /tmp/cbbenchmark
+        state: absent
