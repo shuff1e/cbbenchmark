@@ -1,0 +1,15 @@
+---
+- hosts: nodes
+  remote_user: root
+  tasks:
+    - name: write or read with couchbase cluster
+      shell: >
+        java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark {{ hostname|quote }}
+        {{ bucketName|quote }} {{ bucketPwd|quote }}
+        {{ numKeys }} {{ valueSize }} {{ timeout }}
+        {{ sleepTime }} {{ numThreads }}
+        {{ isGenerator|quote }}
+        {{ prefix|quote }}
+        {{ loopTimes }}
+      args:
+        chdir: /tmp/cbbenchmark/target
