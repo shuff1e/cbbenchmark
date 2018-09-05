@@ -2,12 +2,13 @@
 
 
 [nodes:vars]
-hostname="127.0.0.1"
-bucketName="default"
+hostname="10.19.56.41"
+bucketName="aatest"
 bucketPwd="123456"
 numKeys=5000000
-valueSize=2000
+valueSize=2048
 timeout=10
-sleepTime=0
-numThreads=16
-prefix="cloudcloud"
+sleepTime=4
+numThreads=32
+ration=0.1
+prefix="shuffle"
