@@ -32,9 +32,10 @@ Delete client
   
   **ansible-playbook -i client.hosts delete_client.yml -e 'host_key_checking=False' -f 12**
 
-```
+---
+
 Tips
 
-  if you favor pressure than metrics, don't wait for the response.
-  if you favor metrics than pressure, wait fot the response, aka do it in the sync way.
-```
+  **if you favor pressure than metrics, don't wait for the response.
+  if you favor metrics than pressure, wait fot the response, aka do it in the sync way.**
+
