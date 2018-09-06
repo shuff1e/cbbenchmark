@@ -36,7 +36,7 @@ Delete client
 
 Tips
 
-  **if you favor pressure than metrics, dont't wait for the response, aka in a async way, but in a risk of your client can't hold the pressure**
+  **if you favor pressure than metrics, dont't wait for the response, aka in a async way, but at a risk of your client virtual machine can't hold the pressure**
 
   **if you favor metrics than pressure, wait for the response, aka in a sync way**
   
