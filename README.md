@@ -40,4 +40,4 @@ Tips
 
   **if you favor metrics than pressure, wait for the response, aka in a sync way**
   
-  **ReactiveX Java can aid you wait for the response in a async way, see [RxJava](https://github.com/ReactiveX/RxJava)**
+  **ReactiveX/Java can aid you wait for the response in a async way, see [RxJava](https://github.com/ReactiveX/RxJava)**
