@@ -49,26 +49,27 @@ public class Wbenchmark implements Callable<Future> {
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client;
-        final Timer timer = this.registry.timer("timer");
+        // final Timer timer = this.registry.timer("timer");
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
 
-            this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
+            // this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
 
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
-                    final OperationFuture<CASValue<Object>> operationFuture = client.asyncGetAndTouch(prefix + String.valueOf(i), getUnixEpochInSeconds(7200000L));
+                    client.asyncGetAndTouch(prefix + String.valueOf(i), getUnixEpochInSeconds(7200000L));
+                    // final OperationFuture<CASValue<Object>> operationFuture = client.asyncGetAndTouch(prefix + String.valueOf(i), getUnixEpochInSeconds(7200000L));
 
-                    CASValue<Object> result = null;
-                    try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
-                        result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
-                    } catch (TimeoutException e1) {
-                        this.registry.counter("timeout").inc();
-                    }
-                    if (result != null && result.getValue().equals(value)) {
-                        this.registry.counter("success").inc();
-                    }
+                    // CASValue<Object> result = null;
+                    // try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
+                    //     result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
+                    // } catch (TimeoutException e1) {
+                    //     this.registry.counter("timeout").inc();
+                    // }
+                    // if (result != null && result.getValue().equals(value)) {
+                    //     this.registry.counter("success").inc();
+                    // }
                 }
             }
 
