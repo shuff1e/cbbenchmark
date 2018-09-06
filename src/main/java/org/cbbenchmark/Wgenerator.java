@@ -50,16 +50,15 @@ public class Wgenerator implements Callable<Future> {
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client;
-        final Timer timer = this.registry.timer("timer");
+        // final Timer timer = this.registry.timer("timer");
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
-            this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
+            // this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
 
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
                     client.set(prefix + String.valueOf(i), 100000, value);
-                    // uncomment the following part if you favor metrics than pressure
                     // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 100000, value);
 
                     // Boolean result = false;
