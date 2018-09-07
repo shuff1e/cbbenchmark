@@ -1,0 +1,7 @@
+---
+- hosts: nodes
+  remote_user: root
+  tasks:
+    - name: kill benchmark process
+      shell: >
+        ps -ef | grep "java -Xmx2g -cp cbbenchmark" | grep -v grep | awk '{print $2}' | xargs kill -9
