@@ -31,3 +31,7 @@ Run benchmark
 Delete client
   
   **ansible-playbook -i client.hosts delete_client.yml -e 'host_key_checking=False' -f 12**
+
+Kill benchmark process
+
+  **ansible-playbook -i kill.hosts kill.yml**
