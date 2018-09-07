@@ -18,19 +18,19 @@ Run benchmark
 
 Install client
 
-  **ansible-playbook -i client.hosts install_client.yml -e 'host_key_checking=False' -f 12**
+  **ansible-playbook -i client.hosts install_client.yml -e 'host_key_checking=False' -f 20**
 
 Generate test dataset
 
-  **ansible-playbook -i run.hosts run.yml -e loopTimes=100 -e 'host_key_checking=False' -f 12**
+  **ansible-playbook -i run.hosts run.yml -e loopTimes=100 -e 'host_key_checking=False' -f 20**
   
 Run benchmark
 
-  **ansible-playbook -i run.hosts run.yml -e loopTimes=100 -e 'host_key_checking=False' -f 12**
+  **ansible-playbook -i run.hosts run.yml -e loopTimes=100 -e 'host_key_checking=False' -f 20**
   
 Delete client
   
-  **ansible-playbook -i client.hosts delete_client.yml -e 'host_key_checking=False' -f 12**
+  **ansible-playbook -i client.hosts delete_client.yml -e 'host_key_checking=False' -f 20**
 
 Kill benchmark process
 
