@@ -31,13 +31,3 @@ Run benchmark
 Delete client
   
   **ansible-playbook -i client.hosts delete_client.yml -e 'host_key_checking=False' -f 12**
-
----
-
-Tips
-
-  **if you favor pressure than metrics, dont't wait for the response, aka in a async way, but at a risk of your client virtual machine can't hold the pressure**
-
-  **if you favor metrics than pressure, wait for the response, aka in a sync way**
-  
-  **ReactiveX/Java can aid you wait for the response in a async way, see [RxJava](https://github.com/ReactiveX/RxJava)**
