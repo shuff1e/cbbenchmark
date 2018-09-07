@@ -31,6 +31,7 @@ public class Benchmark {
         final String prefix = String.valueOf(args[9]);
         final int loopTimes = Integer.valueOf(args[10]);
 
+        value = value + value + value;
         byte[] src = value.getBytes();
         byte[] dest = new byte[valueSize];
         System.arraycopy(src, 0, dest, 0, valueSize);
