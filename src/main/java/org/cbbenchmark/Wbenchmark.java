@@ -6,6 +6,7 @@ import com.couchbase.client.CouchbaseClient;
 import net.spy.memcached.CASValue;
 import net.spy.memcached.internal.OperationFuture;
 import net.spy.memcached.transcoders.Transcoder;
+import net.spy.memcached.internal.GetFuture;
 
 import java.io.IOException;
 import java.net.URI;
