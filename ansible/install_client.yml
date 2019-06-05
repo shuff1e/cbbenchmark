@@ -6,3 +6,7 @@
       copy:
         src: cbbenchmark
         dest: /tmp
+    - name: Install init require software
+      yum:  name={{ item }} state=latest
+      with_items:
+        - jdk1.8.x86_64
