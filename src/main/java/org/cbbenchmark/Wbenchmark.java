@@ -59,14 +59,15 @@ public class Wbenchmark implements Callable<Future> {
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
-                     final GetFuture<Object> operationFuture = client.asyncGet(prefix + String.valueOf(i));
-                     Object result = null;
+                     final OperationFuture<CASValue<Object>> operationFuture = client.asyncGets(prefix + String.valueOf(i));
+
+                     CASValue<Object> result = null;
                      try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
                          result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
                      } catch (TimeoutException e1) {
                          this.registry.counter("timeout").inc();
                      }
-                     if (result != null && result.toString().equals(value)) {
+                     if (result != null && result.getValue().equals(value)) {
                          this.registry.counter("success").inc();
                      }
                 }
