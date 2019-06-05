@@ -58,18 +58,16 @@ public class Wbenchmark implements Callable<Future> {
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
-                    client.asyncGetAndTouch(prefix + String.valueOf(i), getUnixEpochInSeconds(7200000L));
-                    // final OperationFuture<CASValue<Object>> operationFuture = client.asyncGetAndTouch(prefix + String.valueOf(i), getUnixEpochInSeconds(7200000L));
-
-                    // CASValue<Object> result = null;
-                    // try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
-                    //     result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
-                    // } catch (TimeoutException e1) {
-                    //     this.registry.counter("timeout").inc();
-                    // }
-                    // if (result != null && result.getValue().equals(value)) {
-                    //     this.registry.counter("success").inc();
-                    // }
+                     final GetFuture<Object> operationFuture = client.asyncGet(prefix + String.valueOf(i));
+                     Object result = null;
+                     try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
+                         result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
+                     } catch (TimeoutException e1) {
+                         this.registry.counter("timeout").inc();
+                     }
+                     if (result != null && result.toString().equals(value)) {
+                         this.registry.counter("success").inc();
+                     }
                 }
             }
 
