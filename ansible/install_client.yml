@@ -4,7 +4,7 @@
   tasks:
     - name: send client to remote hosts
       copy:
-        src: cbbenchmark
+        src: ../../cbbenchmark
         dest: /tmp
     - name: Install init require software
       yum:  name={{ item }} state=latest
