@@ -45,7 +45,8 @@ public class Benchmark {
         final ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
         final MetricRegistry registry = new MetricRegistry();
-        registry.timer("timer");
+        registry.timer("readTimer");
+        registry.timer("writeTimer");
         registry.counter("success");
         registry.counter("total");
         registry.counter("timeout");
