@@ -50,7 +50,7 @@ public class Wgenerator implements Callable<Future> {
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client;
-        // final Timer timer = this.registry.timer("timer");
+        // final Timer timer = this.registry.timer("writeTimer");
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
             // this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
