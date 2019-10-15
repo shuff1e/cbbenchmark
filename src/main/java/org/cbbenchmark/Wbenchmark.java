@@ -50,7 +50,7 @@ public class Wbenchmark implements Callable<Future> {
         nodes.add(URI.create("http://" + hostname + ":8091/pools"));
 
         CouchbaseClient client;
-        final Timer timer = this.registry.timer("timer");
+        final Timer timer = this.registry.timer("readTimer");
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
 
