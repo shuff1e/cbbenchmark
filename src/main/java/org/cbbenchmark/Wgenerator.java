@@ -58,8 +58,8 @@ public class Wgenerator implements Callable<Future> {
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
-                    client.set(prefix + String.valueOf(i), 100000, value);
-                    // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 100000, value);
+                    client.set(prefix + String.valueOf(i), 3600*24*7, value);
+                    // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 3600*24*7, value);
 
                     // Boolean result = false;
                     // try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
