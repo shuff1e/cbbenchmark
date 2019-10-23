@@ -53,23 +53,23 @@ public class Wgenerator implements Callable<Future> {
         // final Timer timer = this.registry.timer("writeTimer");
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
-            // this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
+            this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
 
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
-                    client.set(prefix + String.valueOf(i), 3600*24*7, value);
-                    // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 3600*24*7, value);
+                    // client.set(prefix + String.valueOf(i), 3600*24*7, value);
+                    final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 3600*24*7, value);
 
-                    // Boolean result = false;
-                    // try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
-                    //     result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
-                    // } catch (TimeoutException e1) {
-                    //     this.registry.counter("timeout").inc();
-                    // }
-                    // if (result) {
-                    //     this.registry.counter("success").inc();
-                    // }
+                    Boolean result = false;
+                    try (@SuppressWarnings("unused") Timer.Context context = timer.time()) {
+                        result = operationFuture.get(this.timeout, TimeUnit.MILLISECONDS);
+                    } catch (TimeoutException e1) {
+                        this.registry.counter("timeout").inc();
+                    }
+                    if (result) {
+                        this.registry.counter("success").inc();
+                    }
                 }
             }
 
