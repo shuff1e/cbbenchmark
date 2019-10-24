@@ -2,7 +2,8 @@
 - hosts: nodes
   remote_user: root
   tasks:
-    - set_fact: bench_env={{ hostname|quote }}_{{ bucketName|quote }}_{{ bucketPwd|quote }}_numKeys{{ numKeys }}_valueSize{{ valueSize }}_timeout{{ timeout }}_sleepTime{{ sleepTime }}_numThreads{{ numThreads }}_ratio{{ ratio }}_prefix{{ prefix|quote }}_loopTimes{{ loopTimes }}
+    - name: set bench_env var
+      set_fact: bench_env={{ hostname|quote }}_{{ bucketName|quote }}_{{ bucketPwd|quote }}_numKeys{{ numKeys }}_valueSize{{ valueSize }}_timeout{{ timeout }}_sleepTime{{ sleepTime }}_numThreads{{ numThreads }}_ratio{{ ratio }}_prefix{{ prefix|quote }}_loopTimes{{ loopTimes }}
     - name: write or read with couchbase cluster
       shell: >
         java -Xmx2g -cp cbbenchmark-*.jar org.cbbenchmark.Benchmark {{ hostname|quote }}
