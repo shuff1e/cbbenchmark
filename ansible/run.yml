@@ -10,6 +10,6 @@
         {{ sleepTime }} {{ numThreads }}
         {{ ratio }}
         {{ prefix|quote }}
-        {{ loopTimes }} > {{ hostname|quote }}_{{ bucketName|quote }}_{{ bucketPwd|quote }}_numKeys{{ numKeys }}_valueSize{{ valueSize }}_timeout{{ timeout }}_sleepTime{{ sleepTime }}_numThreads{{ numThreads }}_ratio{{ ratio }}_prefix{{ prefix|quote }}_loopTimes{{ loopTimes }}.log
+        {{ loopTimes }} > {{ hostname|quote }}_{{ bucketName|quote }}_{{ bucketPwd|quote }}_numKeys{{ numKeys }}_valueSize{{ valueSize }}_timeout{{ timeout }}_sleepTime{{ sleepTime }}_numThreads{{ numThreads }}_ratio{{ ratio }}_prefix{{ prefix|quote }}_loopTimes{{ loopTimes }}.log 2>&1
       args:
         chdir: /tmp/cbbenchmark/target
