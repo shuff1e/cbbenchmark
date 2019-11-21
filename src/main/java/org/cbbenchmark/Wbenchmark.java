@@ -15,6 +15,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+// import java.util.concurrent.ThreadLocalRandom;
 
 public class Wbenchmark implements Callable<Future> {
 
@@ -51,6 +52,7 @@ public class Wbenchmark implements Callable<Future> {
 
         CouchbaseClient client;
         final Timer timer = this.registry.timer("readTimer");
+        // final ThreadLocalRandom random = ThreadLocalRandom.current();
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
 
@@ -59,6 +61,7 @@ public class Wbenchmark implements Callable<Future> {
             for (int loop = 0; loop < loopTimes; loop++) {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
+                    // final OperationFuture<CASValue<Object>> operationFuture = client.asyncGets(prefix + String.valueOf(random.nextInt(keyend)));
                      final OperationFuture<CASValue<Object>> operationFuture = client.asyncGets(prefix + String.valueOf(i));
 
                      CASValue<Object> result = null;
