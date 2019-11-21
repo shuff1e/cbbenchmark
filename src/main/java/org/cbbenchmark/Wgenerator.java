@@ -14,6 +14,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+// import java.util.concurrent.ThreadLocalRandom;
 
 public class Wgenerator implements Callable<Future> {
 
@@ -51,6 +52,7 @@ public class Wgenerator implements Callable<Future> {
 
         CouchbaseClient client;
         // final Timer timer = this.registry.timer("writeTimer");
+        // final ThreadLocalRandom random = ThreadLocalRandom.current();
         try {
             client = new CouchbaseClient(nodes, bucketName, bucketPwd);
             this.registry.counter("total").inc(loopTimes * (keyend - keysatrt));
@@ -59,6 +61,7 @@ public class Wgenerator implements Callable<Future> {
                 for (int i = keysatrt; i < keyend; i++) {
                     Thread.sleep(sleeptime);
                     // client.set(prefix + String.valueOf(i), 3600*24*7, value);
+                    // final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(random.nextInt(keyend)), 3600*24*7, value);
                     final OperationFuture<Boolean> operationFuture = client.set(prefix + String.valueOf(i), 3600*24*7, value);
 
                     Boolean result = false;
