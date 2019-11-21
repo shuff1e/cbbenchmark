@@ -58,10 +58,12 @@ public class Benchmark {
         reporter.start(30, TimeUnit.SECONDS);
 
         for (int i = 0; i < readNumThreads; i++) {
+            // final Callable<Future> worker = new Wbenchmark(0, numKeys, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
             final Callable<Future> worker = new Wbenchmark(i * read_keys_per_thread, i * read_keys_per_thread + read_keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
             executor.submit(worker);
         }
         for (int i = 0; i < writeNumThreads; i++) {
+            // final Callable<Future> worker = new Wgenerator(0, numKeys, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
             final Callable<Future> worker = new Wgenerator(i * write_keys_per_thread, i * write_keys_per_thread + write_keys_per_thread, sleepTime, value, hostName, timeout, registry, bucketName, bucketPwd, prefix, loopTimes);
             executor.submit(worker);
         }
